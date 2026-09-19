@@ -28,4 +28,6 @@ export interface VideoLesson {
   url: string;
   description?: string;
   duration?: string;
+  thumbnail?: string;
+  uploadDate?: string;
 }

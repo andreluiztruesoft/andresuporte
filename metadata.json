@@ -1,6 +1,6 @@
 {
   "name": "Central de Suporte - Arquivos Dropbox",
-  "description": "Portal de suporte com arquivos Dropbox e atalhos para as videoaulas do Power Gestor.",
+  "description": "Portal de suporte com arquivos Dropbox e atalhos com links diretos para os 50+ vídeos de treinamento do Power Gestor no Vimeo.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
