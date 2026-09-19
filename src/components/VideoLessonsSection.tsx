@@ -189,8 +189,8 @@ export const VideoLessonsSection: React.FC<VideoLessonsSectionProps> = ({
             />
           </div>
 
-          {/* Module filter chips */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 text-xs">
+          {/* Module filter chips without horizontal scrollbar */}
+          <div className="flex flex-wrap items-center gap-1.5 text-xs">
             <button
               onClick={() => setSelectedModule('todos')}
               className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors shrink-0 cursor-pointer ${
@@ -294,7 +294,7 @@ export const VideoLessonsSection: React.FC<VideoLessonsSectionProps> = ({
                   </div>
 
                   {/* Right actions: 1) Copy Link, 2) Download Shortcut (.url), 3) Watch/Open */}
-                  <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                  <div className="flex flex-wrap items-center gap-2 shrink-0 self-start sm:self-center">
                     
                     {/* Botão 1: Copiar Link Direto */}
                     <button
