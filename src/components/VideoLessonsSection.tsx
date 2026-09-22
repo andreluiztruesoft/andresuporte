@@ -7,7 +7,6 @@ import {
   ExternalLink, 
   Search, 
   Archive, 
-  Edit2, 
   RefreshCw,
   Clock,
   Play
@@ -34,7 +33,6 @@ export const VideoLessonsSection: React.FC<VideoLessonsSectionProps> = ({
   const [selectedModule, setSelectedModule] = useState<string>('todos');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [downloadingZip, setDownloadingZip] = useState(false);
-  const [editingLesson, setEditingLesson] = useState<VideoLesson | null>(null);
 
   const modules = Array.from(new Set(lessons.map((l) => l.module || 'Geral')));
 
@@ -68,14 +66,6 @@ export const VideoLessonsSection: React.FC<VideoLessonsSectionProps> = ({
     } finally {
       setDownloadingZip(false);
     }
-  };
-
-  const handleSaveEdit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!editingLesson) return;
-    const updated = lessons.map((l) => (l.id === editingLesson.id ? editingLesson : l));
-    onUpdateLessons(updated);
-    setEditingLesson(null);
   };
 
   return (
@@ -336,15 +326,6 @@ export const VideoLessonsSection: React.FC<VideoLessonsSectionProps> = ({
                       <Play className="w-3 h-3 text-blue-400 fill-blue-400" />
                       <span className="text-[11px]">Assistir</span>
                     </a>
-
-                    {/* Config / Edit Button */}
-                    <button
-                      onClick={() => setEditingLesson(lesson)}
-                      className="p-1.5 text-slate-500 hover:text-slate-300 hover:bg-slate-800 rounded-lg transition-colors opacity-60 hover:opacity-100 cursor-pointer"
-                      title="Editar título ou link"
-                    >
-                      <Edit2 className="w-3 h-3" />
-                    </button>
                   </div>
                 </div>
               );
@@ -353,80 +334,6 @@ export const VideoLessonsSection: React.FC<VideoLessonsSectionProps> = ({
         </div>
 
       </div>
-
-      {/* Edit Lesson Modal */}
-      {editingLesson && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-xs flex items-center justify-center p-4">
-          <form
-            onSubmit={handleSaveEdit}
-            className="bg-slate-900 border border-slate-800 rounded-2xl p-5 max-w-md w-full space-y-4 shadow-2xl"
-          >
-            <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-              <h3 className="text-sm font-bold text-slate-100">
-                Editar Aula #{editingLesson.number}
-              </h3>
-              <button
-                type="button"
-                onClick={() => setEditingLesson(null)}
-                className="text-slate-400 hover:text-slate-200 text-sm cursor-pointer"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="space-y-3 text-xs">
-              <div className="space-y-1">
-                <label className="text-slate-400">Título da Aula:</label>
-                <input
-                  type="text"
-                  value={editingLesson.title}
-                  onChange={(e) => setEditingLesson({ ...editingLesson, title: e.target.value })}
-                  className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-blue-500"
-                  required
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-slate-400">Link Direto do Vídeo:</label>
-                <input
-                  type="url"
-                  value={editingLesson.url}
-                  onChange={(e) => setEditingLesson({ ...editingLesson, url: e.target.value })}
-                  className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-slate-200 font-mono text-[11px] focus:outline-none focus:border-blue-500"
-                  placeholder="https://vimeo.com/..."
-                  required
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-slate-400">Módulo / Categoria:</label>
-                <input
-                  type="text"
-                  value={editingLesson.module}
-                  onChange={(e) => setEditingLesson({ ...editingLesson, module: e.target.value })}
-                  className="w-full px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-blue-500"
-                />
-              </div>
-            </div>
-
-            <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-800">
-              <button
-                type="button"
-                onClick={() => setEditingLesson(null)}
-                className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs cursor-pointer"
-              >
-                Cancelar
-              </button>
-              <button
-                type="submit"
-                className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-lg text-xs cursor-pointer"
-              >
-                Salvar Alterações
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
 
     </div>
   );

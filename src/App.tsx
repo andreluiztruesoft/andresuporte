@@ -10,7 +10,6 @@ import {
   Copy, 
   Check, 
   FileText, 
-  Settings2, 
   Video,
   FileDown
 } from 'lucide-react';
@@ -27,13 +26,11 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<'dropbox' | 'videos' | 'manual'>('dropbox');
 
   // Dropbox State
-  const [dropboxUrl, setDropboxUrl] = useState<string>(() => {
+  const [dropboxUrl] = useState<string>(() => {
     return localStorage.getItem('custom_dropbox_url') || DEFAULT_DROPBOX_URL;
   });
   const [folderTitle, setFolderTitle] = useState<string>('TRUESOFT');
   const [copied, setCopied] = useState<boolean>(false);
-  const [showConfig, setShowConfig] = useState<boolean>(false);
-  const [inputUrl, setInputUrl] = useState<string>(dropboxUrl);
   const [downloadedManual, setDownloadedManual] = useState<boolean>(false);
 
   // Video Lessons State (Power Gestor)
@@ -107,15 +104,6 @@ export default function App() {
     navigator.clipboard.writeText(dropboxUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleSaveUrl = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (inputUrl.trim()) {
-      setDropboxUrl(inputUrl.trim());
-      localStorage.setItem('custom_dropbox_url', inputUrl.trim());
-      setShowConfig(false);
-    }
   };
 
   return (
@@ -197,17 +185,6 @@ export default function App() {
               )}
             </button>
 
-            {activeTab === 'dropbox' && (
-              <button
-                id="toggle-config-btn"
-                onClick={() => setShowConfig(!showConfig)}
-                className="p-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 rounded-md transition-colors text-xs"
-                title="Configurar Link do Dropbox"
-              >
-                <Settings2 className="w-4 h-4" />
-              </button>
-            )}
-
             {activeTab === 'videos' && (
               <a
                 href="https://vimeo.com/powergestor"
@@ -223,25 +200,6 @@ export default function App() {
           </div>
 
         </div>
-
-        {/* Dropbox URL editor (only if open on Dropbox tab) */}
-        {showConfig && activeTab === 'dropbox' && (
-          <form onSubmit={handleSaveUrl} className="max-w-5xl mx-auto mt-2 pt-2 border-t border-slate-800/80 flex gap-2">
-            <input
-              type="text"
-              value={inputUrl}
-              onChange={(e) => setInputUrl(e.target.value)}
-              placeholder="Cole o link do Dropbox..."
-              className="flex-1 px-3 py-1.5 bg-slate-950 border border-slate-700/70 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-blue-500"
-            />
-            <button
-              type="submit"
-              className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-medium cursor-pointer"
-            >
-              Salvar
-            </button>
-          </form>
-        )}
       </header>
 
       {/* Main Container */}

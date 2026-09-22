@@ -4,11 +4,22 @@
  */
 
 export const TRUESOFT_MANUAL_TEXT = `======================================================================
-TRUESOFT SISTEMAS - MANUAL DE FUNCIONAMENTO DO SUPORTE TÉCNICO
+TRUESOFT SISTEMAS - FUNCIONAMENTO DO SUPORTE TÉCNICO
 ======================================================================
 
-NOME DA EMPRESA:
-Truesoft Sistemas
+Acesso ao Sistema:
+Link: https://app.powergestor.com
+Login: 
+Senha:
+
+----------------------------------------------------------------------
+CONTATOS DO SUPORTE:
+----------------------------------------------------------------------
+• Whatsapp do Suporte:
+  (83) 98801-5825
+
+• Central Telefônica do Suporte:
+  (83) 3512-5825 ou (83) 3142-0007
 
 ----------------------------------------------------------------------
 FUNCIONAMENTO DO SUPORTE:
@@ -23,15 +34,6 @@ HORÁRIO DE FUNCIONAMENTO DO SUPORTE:
 ----------------------------------------------------------------------
 • Segunda a Sexta: das 08:00 às 18:00
 • Sábado: das 08:00 às 17:00
-
-----------------------------------------------------------------------
-CONTATOS DO SUPORTE:
-----------------------------------------------------------------------
-• Whatsapp do Suporte:
-  (83) 98801-5825
-
-• Central Telefônica do Suporte:
-  (83) 3512-5825 ou (83) 3142-0007
 
 ----------------------------------------------------------------------
 PLANTÃO TÉCNICO:
@@ -69,12 +71,6 @@ PRAZOS DE ATENDIMENTO E PRIORIDADES:
 
 * Obs Geral: Todos os prazos podem ser encurtados de acordo com a
   disponibilidade imediata da equipe de analistas da Truesoft.
-
-----------------------------------------------------------------------
-ACESSO AO SISTEMA POWER GESTOR:
-----------------------------------------------------------------------
-Link de acesso direto:
-https://app.powergestor.com
 
 ======================================================================
 Truesoft Sistemas - Suporte Técnico Especializado
